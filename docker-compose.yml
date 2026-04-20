@@ -1,0 +1,19 @@
+services:
+  watchtower-sentinel:
+    build: .
+    container_name: watchtower-sentinel
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./state:/app/state
+      - /var/log/nginx:/host/var/log/nginx:ro
+      - /proc:/host/proc:ro
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8081/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

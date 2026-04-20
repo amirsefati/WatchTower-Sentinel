@@ -1,0 +1,6 @@
+.env
+state/
+.gocache/
+watchtower-sentinel
+dist/
+coverage.out
