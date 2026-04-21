@@ -1,5 +1,5 @@
 .env
-state/
+/state/
 .gocache/
 /watchtower-sentinel
 dist/
